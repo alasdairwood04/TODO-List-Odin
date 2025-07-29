@@ -33,7 +33,5 @@ module: {
       type: "asset/resource"
     }
   ]
-}
-
-
+} 
 };
