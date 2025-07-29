@@ -8,6 +8,14 @@ class AppController {
         this.currentProject = null;
     }
 
+    // Initializes the application with a list of projects
+    // If no projects are provided, it creates a default project
+    init(projects) {
+        this.projects = projects;
+        this.currentProject = projects[0] || null; // Set the first project as the current project, if any
+    }
+
+
     addProject(name) {
         const project = new Project(name);
         this.projects.push(project);
