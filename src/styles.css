@@ -1,0 +1,60 @@
+:root {
+  line-height: 1.5;
+}
+
+h1, h2, h3, h4, h5, figure, p, ol, ul {
+  margin: 0;
+}
+
+ol[role="list"], ul[role="list"] {
+  list-style: none;
+  padding-inline: 0;
+}
+
+h1, h2, h3, h4, h5 {
+  font-size: inherit;
+  font-weight: inherit;
+}
+
+img {
+  display: block;
+  max-inline-size: 100%;
+}
+
+
+/*  */
+
+/* HTML and Body styles (global defaults) */
+html {
+    font-size: 16px; /* Base font size for rem units */
+    scroll-behavior: smooth; /* Optional: smooth scrolling for anchor links */
+}
+
+body {
+    font-family: "Roboto", Arial, sans-serif; /* Fallback fonts */
+    font-size: 1rem; /* Inherit from html */
+    line-height: 1.6;
+    color: #333;
+    background-color: #f0f0f0; /* Light background */
+    -webkit-font-smoothing: antialiased; /* Better font rendering on macOS */
+    -moz-osx-font-smoothing: grayscale; /* Better font rendering on macOS */
+    margin: 0;
+}
+
+.container {
+    display: grid;
+    grid-template-columns: 1fr 6fr;
+    grid-template-rows: auto 1fr auto; /* Header, main content, footer */
+    height: 100vh;
+    overflow: hidden;
+}
+
+.project-container {
+    background-color: #f6f6f6; /* Lighter grey for sidebar */
+    padding: 15px;
+    border-right: 1px solid #e0e0e0;
+    display: flex; /* Use flexbox for vertical layout within sidebar */
+    flex-direction: column;
+    overflow-y: auto; /* Allow scrolling for long project lists */
+
+}

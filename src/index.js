@@ -6,7 +6,6 @@ import Project from './Projects.js'; // Import the Project class
 
 
 
-
 document.addEventListener('DOMContentLoaded', () => {
   const storedProjects = loadFromStorage();
   app.init(storedProjects.length ? storedProjects : [new Project('Default')]);
