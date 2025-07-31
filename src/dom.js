@@ -31,12 +31,14 @@ function renderTodos() {
   todoList.innerHTML = ''; // Clear the todo list.
 
   const todos = app.getTodosFromCurrentProject(); // Get todos from the current project.
+  console.log("Current Project Todos:", todos);
   todos.forEach((todo, index) => {
     const div = document.createElement('div'); // Create a container for each todo.
     div.classList.add('todo-item'); // Add a CSS class for styling.
 
     div.innerHTML = `
       <h3>${todo.title}</h3>
+      <p>${todo.description}</p>
       <p>Due: ${todo.dueDate}</p>
       <p>Priority: ${todo.priority}</p>
       <button data-index="${index}" class="delete-todo">Delete</button>
@@ -54,24 +56,71 @@ function renderTodos() {
 
 function bindAddProject() {
   addProjectBtn.addEventListener('click', () => {
-    const name = prompt('Enter new project name:'); // Prompt the user for a project name.
-    if (name) {
-      app.addProject(name); // Add the new project to the app.
-      renderProjects(); // Re-render the project list.
-    }
+    const input = document.createElement('input');
+    input.type = 'text'; // Create an input field for the project name.
+    input.placeholder = 'Enter project name';
+    input.classList.add('project-input'); // Add a CSS class for styling.
+
+    projectList.appendChild(input); // Add the input field to the project list.
+    input.focus(); // Focus on the input field for immediate typing.
+
+    const addProject = () => {
+      const name = input.value.trim(); // Get the project name from the input field.
+      if (name) {
+        app.addProject(name); // Add the new project to the app.
+        renderProjects(); // Re-render the project list.
+      }
+      input.remove(); // Remove the input field after adding the project.
+    };
+
+    // Add event listeners for Enter key and blur (clicking outside)
+    const handleBlur = () => {
+      addProject();
+      input.removeEventListener('blur', handleBlur); // Remove the blur listener
+    };
+
+    input.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter') {
+        input.removeEventListener('blur', handleBlur); // Prevent blur from triggering
+        addProject();
+      }
+    });
+
+    input.addEventListener('blur', handleBlur);
   });
 }
 
-function bindAddTodo() {
-  addTodoBtn.addEventListener('click', () => {
-    const title = prompt('Title:'); // Prompt the user for the todo title.
-    const description = prompt('Description:'); // Prompt for the description.
-    const dueDate = prompt('Due Date (YYYY-MM-DD):'); // Prompt for the due date.
-    const priority = prompt('Priority (Low/Medium/High):'); // Prompt for the priority.
 
-    if (title && dueDate && priority) {
-      app.addTodoToCurrentProject({ title, description, dueDate, priority }); // Add the new todo to the current project.
+function bindAddTodo() {
+  const todoModal = document.getElementById('add-todo-modal');
+  const todoForm = document.getElementById("add-todo-form");
+  const closeTodoModal = document.getElementById("close-todo-modal");
+
+  // show modal when the add todo button is clicked
+  addTodoBtn.addEventListener("click", () => {
+    todoModal.classList.remove("hidden");
+  });
+
+  // close modal when the close button is clicked
+  closeTodoModal.addEventListener("click", () => {
+    todoModal.classList.add("hidden");
+  });
+
+  todoForm.addEventListener("submit", (e) => {
+    e.preventDefault(); // Prevent the default form submission behavior
+
+    const title = document.getElementById("todo-title").value.trim();
+    const description = document.getElementById("todo-description").value.trim();
+    const dueDate = document.getElementById("todo-due-date").value;
+    const priority = document.getElementById("todo-priority").value;
+
+    console.log("Adding Todo:", { title, description, dueDate, priority });
+
+    if (title && description && dueDate && priority) {
+      app.addTodoToCurrentProject({title, description, dueDate, priority}); // Add the new todo to the current project.
       renderTodos(); // Re-render the todo list.
+      todoModal.classList.add("hidden"); // Hide the modal after adding the todo.
+      todoForm.reset(); // Reset the form fields.
     }
   });
 }

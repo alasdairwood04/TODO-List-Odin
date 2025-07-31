@@ -43,18 +43,204 @@ body {
 
 .container {
     display: grid;
-    grid-template-columns: 1fr 6fr;
+    grid-template-columns: 1fr 5fr;
     grid-template-rows: auto 1fr auto; /* Header, main content, footer */
     height: 100vh;
+    grid-template-areas: 
+        "project-container todo-container"
+        "project-container todo-container"
+        "add-project-and-todo-footer add-project-and-todo-footer"; /* Footer spans the full width */
     overflow: hidden;
 }
 
 .project-container {
-    background-color: #f6f6f6; /* Lighter grey for sidebar */
-    padding: 15px;
-    border-right: 1px solid #e0e0e0;
-    display: flex; /* Use flexbox for vertical layout within sidebar */
-    flex-direction: column;
-    overflow-y: auto; /* Allow scrolling for long project lists */
+    grid-area: project-container;
+    background-color: #f8f8f8; /* White background for the project container */
+    border-right: 1px solid #ddd; /* Light border to separate from todo container */
+    padding: 0.5rem;
+}
 
+.project-list {
+  display: flex;
+  flex-direction: column;
+}
+
+
+.project-btn {
+    background-color: #f8f8f8; /* Bootstrap primary color */
+    color: black;
+    border: none;
+    width: 100% ;
+    text-align: left;
+    padding: 0.25rem 0.5rem; /* Padding for better click area */
+}
+
+.project-input {
+    background-color: #f8f8f8; /* Bootstrap primary color */
+    color: black;
+    border: none;
+    width: 90% ;
+    text-align: left;
+    padding: 0.25rem 0.5rem; /* Padding for better click area */
+
+}
+
+.project-btn:hover {
+    background-color: #d7d5d5; /* Darker shade on hover */
+    border-radius: 0.25rem;
+}
+
+.project-btn.active {
+    background-color: #d7d5d5; /* Darker shade for active state */
+    border-radius: 0.25rem;
+
+  }
+
+.todo-container {
+    grid-area: todo-container;
+    background-color: #fff; /* White background for the todo container */
+    padding: 2rem;
+    overflow-y: auto; /* Allow scrolling if content overflows */
+}
+
+#todo-list {
+  background-color: #fff;
+  padding: 16px;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+}
+
+.todo-item:last-child {
+  border-bottom: none;
+}
+
+
+.todo-item {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  gap: 8px;
+  padding: 8px 0;
+  border-bottom: 1px solid #eee;
+}
+
+
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal-content {
+  background-color: white;
+  padding: 20px;
+  border-radius: 8px;
+  width: 300px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.hidden {
+  display: none;
+}
+
+
+.modal-content form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.modal-content button {
+  margin-top: 10px;
+}
+
+.modal-buttons {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+}
+
+.modal-buttons button {
+  background-color: #ffffff; /* Bootstrap primary color */
+  color: black;
+  border: none;
+  padding: 0.25rem 0.5rem; /* Padding for better click area */
+  cursor: pointer;
+}
+
+.modal-buttons button:hover {
+  background-color: #d7d5d5; /* Darker shade on hover */
+  border-radius: 0.25rem;
+}
+
+.modal-buttons button.active {
+  background-color: #d7d5d5; /* Darker shade for active state */
+  border-radius: 0.25rem;
+}
+
+.modal-buttons img {
+  width: 25px;
+  height: 25px;
+  cursor: pointer;
+}
+
+.add-project-and-todo-footer {
+    display: grid;
+    grid-template-columns: 1fr 5fr; /* Match the grid layout of the container */
+    grid-column: 1 / -1; /* Span the entire width of the grid */
+    height: 30px; /* Set a fixed height for the footer */
+    border-top: #d9d9d9aa 1px solid; /* Add a top border to the footer */
+}
+
+.footer-projects {
+    background-color: #f8f8f8; /* Background color for the project-container column */
+    display: flex;
+    justify-content: space-between;
+}
+
+.footer-todos {
+    background-color: #fff; /* Background color for the todo-container column */
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.footer-button {
+    font-size:0.75rem;
+    cursor: pointer;
+    background-color: none;
+    padding: 0.25rem 0.5rem; /* Padding for better click area */
+    border: none;
+    color: black;
+}
+
+.footer-projects .footer-button {
+    background-color: #f8f8f8; /* Bootstrap primary color */
+}
+
+.footer-todos .footer-button {
+    background-color: #fff; /* Bootstrap primary color */
+}
+
+.footer-button:hover {
+    background-color: #d7d5d5; /* Darker shade on hover */
+    border-radius: 0.25rem;
+}
+
+.footer-button.active {
+    background-color: #d7d5d5; /* Darker shade for active state */
+    border-radius: 0.25rem;
+}
+
+.footer-button img {
+    width: 20px;
+    height: 20px;
+    vertical-align: middle;
 }

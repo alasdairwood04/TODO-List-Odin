@@ -9,23 +9,60 @@
 <body>
     <div class="container">
         <div class="project-container">
-
-            <div id="project-list"></div>
-            
-            <div class="project-container-footer">
-                <button id="add-project-button">Add Project</button>
-            </div>
-        
+            <div id="project-list"></div>   
         </div>
 
         <div class="todo-container">
             <div id="todo-list"></div>
 
-            <button id="add-todo-button">Add Todo</button>
+
+            <div id="add-todo-modal" class="modal hidden">
+                <div class="modal-content">
+                    <h2>Add Todo</h2>
+
+                    <form id="add-todo-form">
+                        <label for="todo-title">Title:</label>
+                        <input type="text" id="todo-title" name="todo-title" required>
+
+                        <label for="todo-description">Description:</label>
+                        <textarea id="todo-description" name="todo-description" required></textarea>
+
+                        <label for="todo-due-date">Due Date:</label>
+                        <input type="date" id="todo-due-date" name="todo-due-date" required>
+
+                        <label for="todo-priority">Priority:</label>
+                        <select id="todo-priority" name="todo-priority" required>
+                            <option value="low">Low</option>
+                            <option value="medium">Medium</option>
+                            <option value="high">High</option>
+                        </select>
+
+                        <div class="modal-buttons">
+                            <button type="button" id="close-todo-modal" class="modal-button"><img src="C:\Users\alasd\OneDrive\Desktop\Full-Stack\Odin Project\JavaScript-Course\TODO-List-Odin\src\assets\modal-cancel.png" alt="Cancel"></button>
+                            <button type="submit" id="add-todo-modal-button" class="modal-button"><img src="C:\Users\alasd\OneDrive\Desktop\Full-Stack\Odin Project\JavaScript-Course\TODO-List-Odin\src\assets\modal-add.png" alt="Add Todo"></button>
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+
         </div>
 
-        <footer>
-        </footer>
+
+
+<footer class="add-project-and-todo-footer">
+    <div class="footer-projects">
+        <button class="footer-button" id="add-project-button"><img src="C:\Users\alasd\OneDrive\Desktop\Full-Stack\Odin Project\JavaScript-Course\TODO-List-Odin\src\assets\plus.png" alt="Add"></button>
+        <button class="footer-button" id="settings-button"><img src="C:\Users\alasd\OneDrive\Desktop\Full-Stack\Odin Project\JavaScript-Course\TODO-List-Odin\src\assets\settings.png" alt="Settings"></button>
     </div>
+    <div class="footer-todos">
+        <button class="footer-button" id="add-todo-button"><img src="C:\Users\alasd\OneDrive\Desktop\Full-Stack\Odin Project\JavaScript-Course\TODO-List-Odin\src\assets\plus.png" alt="Add"></button>
+        <button class="footer-button" id="delete-todo-button"><img src="C:\Users\alasd\OneDrive\Desktop\Full-Stack\Odin Project\JavaScript-Course\TODO-List-Odin\src\assets\delete.png" alt="Delete"></button>
+        <button class="footer-button" id="calendar-button"><img src="C:\Users\alasd\OneDrive\Desktop\Full-Stack\Odin Project\JavaScript-Course\TODO-List-Odin\src\assets\calender.png" alt="calender"></button>
+        <button class="footer-button" id="undo-button"><img src="C:\Users\alasd\OneDrive\Desktop\Full-Stack\Odin Project\JavaScript-Course\TODO-List-Odin\src\assets\forward-arrow.png" alt="undo"></button>
+        <button class="footer-button" id="search-button"><img src="C:\Users\alasd\OneDrive\Desktop\Full-Stack\Odin Project\JavaScript-Course\TODO-List-Odin\src\assets\search.png" alt="Search"></button>
+    </div>
+</footer>    
+</div>
 </body>
-</html>
+</html> 
