@@ -71,6 +71,30 @@ class AppController {
         return this.projects.find(project => project.name === name);
     }
 
+    getTasksFromCurrentProject() {
+        return this.currentProject ? this.currentProject.getTasks() : [];
+    }
+
+    addProjectTask(projectName, task) {
+        const project = this.getProjectByName(projectName);
+        if (project) {
+            project.addTask(task);
+            saveToStorage(this.projects);
+        } else {
+            console.error(`Project with name ${projectName} not found.`);
+        }
+    }
+
+    removeProjectTask(projectName, task) {
+        const project = this.getProjectByName(projectName);
+        if (project) {
+            project.removeTask(task);
+            saveToStorage(this.projects);
+        } else {
+            console.error(`Project with name ${projectName} not found.`);
+        }
+    }
+
     getAllProjects() {
         return this.projects;
     }

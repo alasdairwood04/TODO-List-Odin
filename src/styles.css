@@ -107,23 +107,93 @@ body {
   background-color: #fff;
   padding: 16px;
   border-radius: 8px;
-  border: 1px solid #ddd;
 }
 
 .todo-item:last-child {
   border-bottom: none;
 }
 
-
 .todo-item {
   display: flex;
-  align-items: center;
-  flex-direction: column;
-  gap: 8px;
-  padding: 8px 0;
-  border-bottom: 1px solid #eee;
+  flex-direction: column; /* Stack content vertically */
+  gap: 8px; /* Add spacing between elements */
+  padding: 16px; /* Add padding inside the todo item */
+  margin-bottom: 12px; /* Add spacing between todo items */
+  border-radius: 8px; /* Rounded corners */
+  background-color: #fff; /* Light background color */
 }
 
+.todo-item .title {
+  display: flex;
+  justify-content: space-between; /* Space between title and edit button */
+  padding-bottom: 0.5rem;
+  border-bottom: #bfc0c1 1px solid; /* Blue underline for the title */
+}
+
+
+.todo-item h3 {
+  font-size: 1.25rem; /* Slightly larger font for the title */
+  margin: 0; /* Remove default margin */
+  color: #3b65d1; /* Darker text color */
+  font-weight: bold; /* Bold title for emphasis */
+}
+
+.todo-item p {
+  font-size: 0.9rem; /* Smaller font for description and details */
+  margin: 4px 0; /* Add spacing between paragraphs */
+  color: #666; /* Subtle text color */
+}
+
+.todo-item .todo-actions {
+  display: flex;
+  justify-content: flex-end; /* Align buttons to the right */
+  gap: 8px; /* Add spacing between buttons */
+}
+
+.todo-item .todo-actions button {
+  background-color: #f8f8f8; /* Light button background */
+  border: 1px solid #ddd; /* Light border */
+  border-radius: 4px; /* Rounded corners */
+  padding: 4px 8px; /* Add padding inside buttons */
+  cursor: pointer; /* Pointer cursor on hover */
+  transition: background-color 0.2s, transform 0.2s; /* Smooth hover effect */
+}
+
+.todo-item .todo-actions button:hover {
+  background-color: #d7d5d5; /* Darker background on hover */
+  transform: scale(1.05); /* Slightly enlarge on hover */
+}
+
+.todo-item .todo-actions img {
+  width: 16px; /* Icon size */
+  height: 16px;
+  vertical-align: middle; /* Align icons with text */
+}
+
+
+.dropdown-menu {
+  position: absolute;
+  background-color: white;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+  padding: 8px 0;
+}
+
+.dropdown-option {
+  display: block;
+  width: 100%;
+  padding: 8px 16px;
+  background: none;
+  border: none;
+  text-align: left;
+  cursor: pointer;
+}
+
+.dropdown-option:hover {
+  background-color: #f0f0f0;
+}
 
 .modal {
   position: fixed;
@@ -145,11 +215,6 @@ body {
   width: 300px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
-
-.hidden {
-  display: none;
-}
-
 
 .modal-content form {
   display: flex;
@@ -243,4 +308,38 @@ body {
     width: 20px;
     height: 20px;
     vertical-align: middle;
+}
+
+
+
+/* drop-down menu for todo items */
+
+.dropdown-menu {
+  position: absolute;
+  top: var(--dropdown-top, 0); /* Default to 0 if not set */
+  left: var(--dropdown-left, 0); /* Default to 0 if not set */
+  background-color: white;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+}
+
+.dropdown-menu button {
+  background: none;
+  border: none;
+  padding: 5px 10px;
+  text-align: left;
+  cursor: pointer;
+}
+
+.dropdown-menu button:hover {
+  background-color: #f0f0f0;
+}
+
+.hidden {
+  display: none;
 }
