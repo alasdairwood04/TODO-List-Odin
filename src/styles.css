@@ -73,6 +73,8 @@ body {
     width: 100% ;
     text-align: left;
     padding: 0.25rem 0.5rem; /* Padding for better click area */
+    font-size: 1rem;
+    font-weight: bold;
 }
 
 .project-input {
@@ -342,4 +344,24 @@ body {
 
 .hidden {
   display: none;
+}
+
+.title-input {
+  font-size: 1.25rem; /* Slightly larger font for the title */
+  margin: 0; /* Remove default margin */
+  color: #3b65d1; /* Darker text color */
+  font-weight: bold; /* Bold title for emphasis */
+  background-color: transparent; /* Transparent background */
+  border: none; /* Remove the border */
+  outline: none; /* Remove the focus outline */
+
+}
+
+.description-input {
+  font-size: 0.9rem; /* Smaller font for description and details */
+  margin: 4px 0; /* Add spacing between paragraphs */
+  color: #666; /* Subtle text color */
+  background-color: transparent; /* Transparent background */
+  border: none; /* Remove the border */
+  outline: none; /* Remove the focus outline */
 }

@@ -18,8 +18,6 @@ function loadFromStorage() {
         todo.description,
         todo.dueDate,
         todo.priority,
-        todo.notes,
-        todo.checklist,
         todo.completed
       ))
     );

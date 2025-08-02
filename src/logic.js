@@ -4,7 +4,7 @@ import { saveToStorage, loadFromStorage } from './storage.js';
 
 class AppController {
     constructor() {
-        this.projects = loadFromStorage();
+        this.projects = loadFromStorage() || []; // Load projects from storage or initialize with an empty array
         this.currentProject = null;
     }
 
